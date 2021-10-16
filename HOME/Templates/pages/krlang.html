@@ -1,0 +1,74 @@
+{% extends "pages/base.html" %}
+{% block title %}{% endblock %}
+{% block contents %}
+<div id="divform">
+<form action="" method="get" name ="form-information">
+    <fieldset class="fieldset1">
+        <legend style="color: rgb(77, 1, 255);"><b style="color: red;">☆</b><b>베트남어<b style="color: red;">☞</b>한국어 변환하기 프로그램</b><b style="color: red;">☆</b></legend>
+        <hr style="border-color: rgb(145, 145, 151)">
+        <table>
+            <tr>
+                <td height="100" style="border-left: none; border-right: none;">
+                    <img src="https://i.upanh.org/2021/08/13/vn_kr.jpg" alt="vn kr" width="422" height="100" style="margin-bottom: -5px;">
+                </td>
+            </tr>
+            <tr>
+                <td class="contents" style="color: gray; line-height: 145%; text-align: left;  font-size: 9pt; padding-top: 8px;">
+                    <div style="padding-right: 10px; text-align: right;">
+                        <a href="/vnlang">베트남어</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">
+                    <b>▶ 변환할 타입을 선택해 주십시오.</b>
+                </td>
+            </tr>
+            <tr>
+                <td class="contents" style="text-align: left; padding-left: 37px;">
+                    <span id="langbuttonlist" class="button" style="display: inline-block; width:300px;">
+                        <input type = "radio" id ="button1" name="num" value="1" checked="checked">
+                        <label for="button1">영어로 변환하기.</label><br>
+                        <input type = "radio" id ="button2" name="num" value="2">
+                        <label for="button2">한국어로 변환하기.</label><br>
+                        <input type = "radio" id ="button3" name="num" value="3">
+                        <label for="button3">영어와 한국어로 다 변환하기.</label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+            <td class="contents">
+                    <textarea name="inputtext" rows="2" cols="20" id="inputText" class="textarea" onchange="MaxLength(150)" style="height: 156px; width: 353px; margin: 0px;"></textarea>
+            </td> 
+            </tr>
+            <tr>
+                <td class="contents">
+                    <input type="submit" value="바꾸기" onclick="information()" class="but">
+                    <input type="BUTTON" value="창닫기" onclick="window.close()" class="but">
+                </td>
+            </tr>
+            <tr>
+                <td class="contents">
+                        <textarea rows="12" style="line-height: 130%; width: 353px; font: size 9pt;" readonly></textarea>
+                </td> 
+            </tr>
+        </table>
+    </fieldset>
+</form>
+</div>
+<script>
+    function information(){
+    var num = document.forms["form-information"]["num"].value;
+    var text = document.getElementById("inputText").value;
+
+    if (num == 1)
+        alert(text)
+    else if (num == 2)
+        alert('Hello!')
+    
+    else if (num == 3)
+        alert('안녕!')
+    
+    }
+</script>
+{% endblock %}

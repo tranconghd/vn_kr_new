@@ -1,0 +1,59 @@
+body {
+    text-align:center; 
+    display: block;
+    width: auto;
+    height:auto;
+    align-items: center;
+    margin: center auto;
+}
+#divform { text-align: center; 
+    display:block;
+    width: 460px;
+    height: 700px;
+    align-items: center;
+    margin: 0 auto;
+}
+table{
+    text-align: center;
+    display: block;
+}
+form{
+    display: block;
+    margin-top: auto;
+}
+td{
+    font-family: "맑은 고딕";
+    font-size: 10pt;
+    text-align: center;
+}
+.contents{
+    font-size: 9pt;
+    background-color: rgb(248, 248, 221);
+    cursor: default;
+}
+.title{
+    text-align: left;
+}
+.fieldset1{
+    position: absolute;
+}
+.but {
+    background-color: #FFFAEF;
+    color: #333333;
+    border-style: solid;
+    border: 1px solid #f2b704;
+    height: 21px;
+    width: 60px;
+    padding-top: 1px;
+    cursor: pointer;
+    text-align: center;
+}
+.textarea {
+    background-color: #FFFAEF;
+    color: #333333;
+    border-style: solid;
+    border: 1px solid #f2b704;
+    padding-left: 2pt;
+    padding-top: 2pt;
+    padding-right: 2pt;
+}
