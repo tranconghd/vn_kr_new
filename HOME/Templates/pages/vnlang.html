@@ -63,7 +63,8 @@ td{
 {% endblock %}
 {% block contents %}
 <div id="divform">
-<form action="" method="get" name ="form-information">
+<form action="/result_VN/" method="post" name ="form-information">
+{%csrf_token%}
     <fieldset class="fieldset1">
         <legend style="color: rgb(77, 1, 255);"><b style="color: red;">☆</b><b>CHƯƠNG TRÌNH PHIÊN ÂM VIỆT - HÀN</b><b style="color: red;">☆</b></legend>
         <hr style="border-color: rgb(145, 145, 151)">
@@ -88,11 +89,11 @@ td{
             <tr>
                 <td class="contents" style="text-align: left; padding-left: 37px;">
                     <span id="langbuttonlist" class="button" style="display: inline-block; width:300px;">
-                        <input type = "radio" id ="button1" name="num" value="1" checked="checked">
+                        <input type = "radio" id ="button1" name="choice" value="1" checked="checked">
                         <label for="button1">Đổi sang tiếng anh.</label><br>
-                        <input type = "radio" id ="button2" name="num" value="2">
+                        <input type = "radio" id ="button2" name="choice" value="2">
                         <label for="button2">Đổi sang tiếng hàn.</label><br>
-                        <input type = "radio" id ="button3" name="num" value="3">
+                        <input type = "radio" id ="button3" name="choice" value="3">
                         <label for="button3">Đổi sang cả tiếng anh và tiếng hàn.</label>
                     </span>
                 </td>
@@ -104,32 +105,25 @@ td{
             </tr>
             <tr>
                 <td class="contents">
-                    <input type="submit" value="CHUYỂN ĐỔI" onclick="information()" class="but">
-                    <input type="BUTTON" value="THOÁT" onclick="window.close()" class="but">
+                    <input type="submit" value="CHUYỂN ĐỔI" class="but">
+                    <input type="BUTTON" value="THOÁT" onclick="window.close();" class="but">
                 </td>
             </tr>
             <tr>
                 <td class="contents">
-                        <textarea rows="12" style="line-height: 130%; width: 353px; font: size 9pt;" readonly></textarea>
+                        <textarea rows="12" style="line-height: 130%; width: 353px; font: size 9pt;" readonly>
+* Cách viết chính tả những từ vay mượn nước ngoài cụ thể hơn là cách viết tiếng việt bằng ngôn ngữ tiếng hàn.
+
+* Trong chương trình này bạn có thể nhập tên người, tên riêng hay bất cứ thứ gì bạn muốn bằng tiếng việt và chương trình sẽ chuyển đổi sang tiếng anh hay tiếng hàn theo lựa chọn của bạn.
+        * LƯU Ý: Tên người hay tên địa danh là danh từ riêng nên khi chuyển sang tiếng anh chỉ cần bỏ dấu của tiếng việt. vì tiếng việt sử dụng bảng chữ cái latinh.
+
+* Kết quả chuyển đổi tiếng Việt sang tiếng Hàn do chương trình tự động tạo nên có thể có sai sót. Vui lòng chỉ ra bất kỳ sai lầm hoặc thiếu sót nào trong khi sử dụng nó. 
+                        </textarea>
                 </td> 
             </tr>
         </table>
     </fieldset>
 </form>
 </div>
-<script>
-    function information(){
-    var num = document.forms["form-information"]["num"].value;
-    var text = document.getElementById("inputText").value;
 
-    if (num == 1)
-        alert(text)
-    else if (num == 2)
-        alert('Hello!')
-    
-    else if (num == 3)
-        alert('안녕!')
-    
-    }
-</script>
 {% endblock %}

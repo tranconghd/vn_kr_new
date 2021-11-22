@@ -66,7 +66,7 @@ def vn_kor(text):# 베트남어 -> 한국어
                 VNname+=t
         VNname+='! '
     VNname=VNname.split()
-   
+    print(VNname)
     # 1. 해당 글자가 자음인지 모음인지 확인
     vc=''
     for i in range(len(vnName)):
@@ -80,7 +80,9 @@ def vn_kor(text):# 베트남어 -> 한국어
             else:
                 vc+=t
         vc+='! '
+        print(vc)
     vc=vc.split()
+    print(vc)
     for i in range(len(VNname)):
         # ccv → FFv / cv → fv / cvv → fVV / vv → VV/ VVv → DDD / cc → dd / vc → vC
         vc[i]= vc[i].replace('ccc','TTT').replace('ccv', 'FFv').replace('cv', 'fv').replace('cvv', 'fVV').replace('vv', 'VV').replace('VVv', 'DDD').replace('cc', 'dd').replace('vc', 'vC').replace('Vc', 'vC').replace('!VV','!BB').replace('!vC', '!AC').replace('!vdd', '!Add').replace('!VvC', '!BBC').replace('!DDD', '!EEE').replace('fDDDc', 'fDDDC').replace('!v!', '!A!')
@@ -94,6 +96,7 @@ def vn_kor(text):# 베트남어 -> 한국어
             
             elif (vc[i][k:k+3]=='FFv' or vc[i][k:k+3]=='FFA') and (VNname[i][k:k+3]=='thi'):
                 vc[i]=vc[i].replace('FFA','FFv',1)
+        print(vc)
     return vn_eng_edit(vc,VNname)
 def vn_eng_edit(vc,VNname):# 2. 자음 / 모음 / 두글자 자음 에서 검색
         result = ''   # 영 > 한 변환 결과

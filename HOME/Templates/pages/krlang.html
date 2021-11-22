@@ -1,8 +1,70 @@
 {% extends "pages/base.html" %}
 {% block title %}{% endblock %}
+{%block style %}
+body {
+    text-align:center; 
+    display: block;
+    width: auto;
+    height:auto;
+    align-items: center;
+    margin: center auto;
+}
+#divform { text-align: center; 
+    display:block;
+    width: 460px;
+    height: 700px;
+    align-items: center;
+    margin: 0 auto;
+}
+table{
+    text-align: center;
+    display: block;
+}
+form{
+    display: block;
+    margin-top: auto;
+}
+td{
+    font-family: "맑은 고딕";
+    font-size: 10pt;
+    text-align: center;
+}
+.contents{
+    font-size: 9pt;
+    background-color: rgb(248, 248, 221);
+    cursor: default;
+}
+.title{
+    text-align: left;
+}
+.fieldset1{
+    position: absolute;
+}
+.but {
+    background-color: #FFFAEF;
+    color: #333333;
+    border-style: solid;
+    border: 1px solid #f2b704;
+    height: 21px;
+    width: 60px;
+    padding-top: 1px;
+    cursor: pointer;
+    text-align: center;
+}
+.textarea {
+    background-color: #FFFAEF;
+    color: #333333;
+    border-style: solid;
+    border: 1px solid #f2b704;
+    padding-left: 2pt;
+    padding-top: 2pt;
+    padding-right: 2pt;
+}
+{% endblock %}
 {% block contents %}
 <div id="divform">
-<form action="" method="get" name ="form-information">
+<form action="/result_KR/" method="post" name ="form-information">
+{%csrf_token%}
     <fieldset class="fieldset1">
         <legend style="color: rgb(77, 1, 255);"><b style="color: red;">☆</b><b>베트남어<b style="color: red;">☞</b>한국어 변환하기 프로그램</b><b style="color: red;">☆</b></legend>
         <hr style="border-color: rgb(145, 145, 151)">
@@ -27,12 +89,14 @@
             <tr>
                 <td class="contents" style="text-align: left; padding-left: 37px;">
                     <span id="langbuttonlist" class="button" style="display: inline-block; width:300px;">
-                        <input type = "radio" id ="button1" name="num" value="1" checked="checked">
+                       
+                        <input type = "radio" id ="button1" name="choice" value="1" checked="checked">
                         <label for="button1">영어로 변환하기.</label><br>
-                        <input type = "radio" id ="button2" name="num" value="2">
+                        <input type = "radio" id ="button2" name="choice" value="2">
                         <label for="button2">한국어로 변환하기.</label><br>
-                        <input type = "radio" id ="button3" name="num" value="3">
+                        <input type = "radio" id ="button3" name="choice" value="3">
                         <label for="button3">영어와 한국어로 다 변환하기.</label>
+            
                     </span>
                 </td>
             </tr>
@@ -43,32 +107,29 @@
             </tr>
             <tr>
                 <td class="contents">
-                    <input type="submit" value="바꾸기" onclick="information()" class="but">
-                    <input type="BUTTON" value="창닫기" onclick="window.close()" class="but">
+                    <input type="submit" value="바꾸기" class="but">
+                    <input type="BUTTON" value="창닫기" onclick="window.close();" class="but">
                 </td>
             </tr>
             <tr>
                 <td class="contents">
-                        <textarea rows="12" style="line-height: 130%; width: 353px; font: size 9pt;" readonly></textarea>
+                        <textarea rows="12" style="line-height: 130%; width: 353px; font: size 9pt;" readonly>
+
+* 외래어 표기법은 베트남어를 한글로 표기하는 방법입니다.
+
+* 이 프로그램에서는 베트남어로 인명, 고유명사 또는 원하는 것도 입력하시고 프로그램은 하신 선택(영문이나 한글)으로 변환할겁니다.
+        * 유의: 인명이나 지명은 고유명사이므로 영어로 변경할 때 베트남어 억양만 빼면 됩니다. 베트남어가 라틴 알파벳을 사용하기 때문입니다.
+        
+* 베트남어☞한국어 변환하기 프로그램에서 제시하는 결과는 프로그램을 통해 자동 생성한 결과이므로 오류가 있을 수 있습니다. 이용하시면서 잘못된 부분이나 빠뜨린 부분은 지적해 주십시오.
+                        
+                        </textarea>
                 </td> 
             </tr>
         </table>
     </fieldset>
 </form>
 </div>
-<script>
-    function information(){
-    var num = document.forms["form-information"]["num"].value;
-    var text = document.getElementById("inputText").value;
 
-    if (num == 1)
-        alert(text)
-    else if (num == 2)
-        alert('Hello!')
-    
-    else if (num == 3)
-        alert('안녕!')
-    
-    }
-</script>
+
+
 {% endblock %}

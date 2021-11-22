@@ -1,7 +1,130 @@
 {% extends "pages/base.html" %}
 {% block title %}CHƯƠNG TRÌNH PHIÊN ÂM VIỆT - HÀN{% endblock %}
+{%block style %}
+body {
+    text-align:center; 
+    display: block;
+    width: auto;
+    height:auto;
+    align-items: center;
+    margin: center auto;
+}
+#divform { text-align: center; 
+    display:block;
+    width: 460px;
+    height: 700px;
+    align-items: center;
+    margin: 0 auto;
+}
+table{
+    text-align: center;
+    display: block;
+}
+form{
+    display: block;
+    margin-top: auto;
+}
+td{
+    font-family: "맑은 고딕";
+    font-size: 10pt;
+    text-align: center;
+}
+.contents{
+    font-size: 9pt;
+    background-color: rgb(248, 248, 221);
+    cursor: default;
+}
+.title{
+    text-align: left;
+}
+.fieldset1{
+    position: absolute;
+}
+.but {
+    background-color: #FFFAEF;
+    color: #333333;
+    border-style: solid;
+    border: 1px solid #f2b704;
+    height: 21px;
+    width: 100px;
+    padding-top: 1px;
+    cursor: pointer;
+    text-align: center;
+}
+.textarea {
+    background-color: #FFFAEF;
+    color: #333333;
+    border-style: solid;
+    border: 1px solid #f2b704;
+    padding-left: 2pt;
+    padding-top: 2pt;
+    padding-right: 2pt;
+}
+{% endblock %}
 {% block contents %}
-<p> ket qua nhan duoc</p>
+<div id="divform">
+<form action="/vnlang/" method="post" name ="form-information">
+{%csrf_token%}
+    <fieldset class="fieldset1">
+        <legend style="color: rgb(77, 1, 255);"><b style="color: red;">☆</b><b>CHƯƠNG TRÌNH PHIÊN ÂM VIỆT - HÀN</b><b style="color: red;">☆</b></legend>
+        <hr style="border-color: rgb(145, 145, 151)">
+        <table>
+            <tr>
+                <td height="100" style="border-left: none; border-right: none;">
+                    <img src="https://i.upanh.org/2021/08/13/vn_kr.jpg" alt="vn kr" width="422" height="100" style="margin-bottom: -5px;">
+                </td>
+            </tr>
+            <tr>
+                <td class="contents" style="color: gray; line-height: 145%; text-align: left;  font-size: 9pt; padding-top: 8px;">
+                    <div style="padding-right: 10px; text-align: right;">
+                        <a href="/krlang">TIẾNG HÀN</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">
+                    <b>▶ Bạn đã chọn kiểu: </b>
+                </td>
+            </tr>
+            <tr>
+                <td class="contents" style="text-align: left; padding-left: 37px;">
+                -> {{ choice }}
+                </td>
+            </tr>
+            <tr>
+            <td class="contents">
+                    <textarea rows="8" style="line-height: 130%; width: 353px; font: size 9pt;" readonly>
+NỘI DUNG ĐÃ NHẬP:
+{{ input_text }}
 
+                    </textarea>
+            </td> 
+            </tr>
+            <tr>
+                <td class="contents">
+                    <input type="submit" value="QUAY LẠI" onclick="action" class="but">
+                    <input type="BUTTON" value="THOÁT" onclick="window.close()" class="but">
+                </td>
+            </tr>
+            <tr>
+                <td class="contents">
+                        <textarea rows="18" style="line-height: 130%; width: 353px; font: size 9pt;" readonly>
+KẾT QUẢ:
+    TIẾNG ANH:
+    {%for text in eng_text %}
+        {{text}}
+    {% endfor %}
+    
+    TIẾNG HÀN:
+    {%for text in kr_text %}
+        {{ text }}
+    {% endfor %}
+                        </textarea>
+                </td> 
+            </tr>
+        </table>
+    </fieldset>
+</form>
+</div>
 
 {% endblock %}
